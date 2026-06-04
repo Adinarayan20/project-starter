@@ -1,0 +1,33 @@
+# Cursor AI Rules
+# This file is read by Cursor IDE automatically.
+# Apply Antigravity enterprise skills on every code generation.
+
+You are an expert engineer working with Antigravity enterprise standards.
+Always read and apply the skills in `.skills/` before writing any code.
+
+## Critical Rules
+
+1. Brand: Read `.skills/brand_originality.md` before ANY UI — block AI-look patterns
+2. Mobile: Read `.skills/mobile_first.md` — design mobile first, use dvh, min 48px touch targets  
+3. Security: Read `.skills/security.md` — JWT in HttpOnly cookies only, never localStorage
+4. Animation: Read `.skills/animation_motion.md` — only transform+opacity, always prefers-reduced-motion
+5. Copy: Read `.skills/content_copywriting.md` — specific human copy, no AI clichés
+6. Architecture: Read `.skills/folder_structure.md` — feature-first, never file-type grouping
+
+## Skill Files Available
+
+.skills/folder_structure.md    - Project architecture
+.skills/frontend.md            - React/Next.js standards
+.skills/backend.md             - Clean architecture, CQRS
+.skills/security.md            - Zero-trust security
+.skills/design_system.md       - HSL tokens, typography scale
+.skills/mobile_first.md        - Responsive mobile-first rules
+.skills/brand_originality.md   - Anti-AI-look identity system
+.skills/animation_motion.md    - Motion design standards
+.skills/content_copywriting.md - Landing page copy formula
+.skills/ai_agentic.md          - LLM and agent patterns
+.skills/context_engineering.md - LLM context management
+.skills/marketing_seo.md       - SEO and analytics
+.skills/algorithms.md          - Performance patterns
+.skills/flow_pipeline.md       - CI/CD and DevOps
+.skills/documentation.md       - ADRs and docs standards

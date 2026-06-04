@@ -1,0 +1,83 @@
+name: CI
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+
+jobs:
+  quality:
+    name: Code Quality
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v3
+        with:
+          version: 9
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Lint
+        run: pnpm lint
+
+      - name: Type check
+        run: pnpm typecheck
+
+      - name: Unit tests
+        run: pnpm test
+
+  build:
+    name: Build
+    needs: quality
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v3
+        with: { version: 9 }
+      - uses: actions/setup-node@v4
+        with: { node-version: '22', cache: 'pnpm' }
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm build
+
+      - name: Lighthouse CI
+        uses: treosh/lighthouse-ci-action@v11
+        with:
+          configPath: '.lighthouserc.json'
+          uploadArtifacts: true
+        env:
+          LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
+
+      - name: Security audit
+        run: pnpm audit --audit-level=high
+
+  skills-check:
+    name: Skills Integrity
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Verify .skills/ directory exists
+        run: |
+          if [ ! -d ".skills" ]; then
+            echo "❌ .skills/ directory is missing!"
+            echo "Run: cp -r ~/antigravity-starter/.skills ./"
+            exit 1
+          fi
+          echo "✅ .skills/ directory present ($(ls .skills/*.md | wc -l) skills loaded)"
+
+      - name: List active skills
+        run: |
+          echo "📚 Active enterprise skills:"
+          for f in .skills/*.md; do
+            name=$(basename "$f" .md)
+            size=$(wc -c < "$f")
+            echo "  ✅ $name ($size bytes)"
+          done

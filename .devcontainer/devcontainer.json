@@ -1,0 +1,55 @@
+{
+  "name": "Antigravity Dev Container",
+  "image": "mcr.microsoft.com/devcontainers/typescript-node:22",
+
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": { "version": "22" },
+    "ghcr.io/devcontainers/features/git:1": {},
+    "ghcr.io/devcontainers/features/github-cli:1": {}
+  },
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "GitHub.copilot",
+        "GitHub.copilot-chat",
+        "bradlc.vscode-tailwindcss",
+        "esbenp.prettier-vscode",
+        "dbaeumer.vscode-eslint",
+        "prisma.prisma",
+        "ms-azuretools.vscode-docker",
+        "humao.rest-client",
+        "yoavbls.pretty-ts-errors",
+        "antfu.unocss",
+        "styled-components.vscode-styled-components",
+        "mikestead.dotenv"
+      ],
+      "settings": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.codeActionsOnSave": {
+          "source.fixAll.eslint": "explicit"
+        },
+        "typescript.preferences.importModuleSpecifier": "shortest",
+        "typescript.updateImportsOnFileMove.enabled": "always",
+        "github.copilot.chat.codeGeneration.instructions": [
+          {
+            "file": ".github/copilot-instructions.md"
+          }
+        ]
+      }
+    }
+  },
+
+  "onCreateCommand": "pnpm install",
+  "postCreateCommand": "echo '✅ Antigravity dev container ready. Skills loaded from .skills/'",
+
+  "forwardPorts": [3000, 3001, 5432, 6379],
+  "portsAttributes": {
+    "3000": { "label": "App", "onAutoForward": "openBrowser" },
+    "5432": { "label": "PostgreSQL" },
+    "6379": { "label": "Redis" }
+  },
+
+  "remoteUser": "node"
+}

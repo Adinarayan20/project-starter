@@ -1,13 +1,13 @@
 # Antigravity Starter Template
 
-A world-class project starter template with 15 enterprise-grade AI skills built in.
+A world-class project starter template with 18 enterprise-grade AI skills built in.
 Works in **Antigravity IDE**, **VS Code**, **GitHub Codespaces**, and **Cursor** — out of the box.
 
 ## What's Included
 
 ```
-antigravity-starter/
-├── .skills/                  ← 15 enterprise skills (travels with every project)
+project-starter/
+├── .skills/                  ← 18 enterprise skills (travels with every project)
 ├── .github/
 │   ├── copilot-instructions.md  ← GitHub Copilot reads these automatically
 │   ├── PULL_REQUEST_TEMPLATE.md
@@ -31,28 +31,31 @@ antigravity-starter/
 ### Option B: Local Copy
 ```powershell
 # Windows (PowerShell)
-Copy-Item -Path "C:\path\to\antigravity-starter" -Destination "C:\path\to\new-project" -Recurse
+Copy-Item -Path "C:\path\to\project-starter" -Destination "C:\path\to\new-project" -Recurse
 ```
 
 ```bash
 # Mac / Linux / Codespaces
-cp -r ~/antigravity-starter ~/new-project
+cp -r ~/project-starter ~/new-project
 ```
 
 ## Skills System
 
-The `.skills/` folder contains 15 enterprise-grade knowledge files that AI tools
+The `.skills/` folder contains 18 enterprise-grade knowledge files that AI tools
 (Antigravity, Copilot, Cursor, Claude) read to enforce world-class standards.
 
 | Skill | What It Enforces |
 |---|---|
+| `iterative_refinement.md` | Universal Draft → Stress-Test → Polish loop |
 | `folder_structure.md` | Feature-first project architecture |
 | `security.md` | Zero-trust, JWT in HttpOnly cookies only |
 | `design_system.md` | HSL color tokens, fluid typography |
+| `product_ideation.md` | PM loops and RICE prioritization |
 | `brand_originality.md` | Anti-AI-look: no generic purple gradients |
 | `mobile_first.md` | 48px touch targets, dvh, 150kb JS budget |
 | `frontend.md` | TanStack Query, Zustand, RSC rules |
 | `backend.md` | Clean architecture, CQRS, Outbox pattern |
+| `testing_verification.md` | Automated Jest/Vitest/Playwright tests |
 | `animation_motion.md` | transform+opacity only, Framer Motion, GSAP |
 | `content_copywriting.md` | Landing page formula, AI copy blocklist |
 | `ai_agentic.md` | RAG, tool-calling, context guardrails |
@@ -67,11 +70,11 @@ The `.skills/` folder contains 15 enterprise-grade knowledge files that AI tools
 Skills are versioned in this repo. To get the latest:
 ```bash
 # Pull latest skills from Antigravity IDE (Windows)
-Copy-Item -Path "C:\Users\adina\.gemini\antigravity-ide\.skills\*" -Destination ".\.skills\" -Force
+Copy-Item -Path "C:\Users\adina\.gemini\antigravity-ide\knowledge\*-skill\artifacts\*" -Destination ".\.skills\" -Force
 git add .skills/
 git commit -m "chore(skills): update to latest Antigravity enterprise skills"
 ```
 
 ---
 
-*Antigravity Starter Template · Enterprise Skills v2.0*
+*Antigravity Starter Template · Enterprise Skills v3.0*
